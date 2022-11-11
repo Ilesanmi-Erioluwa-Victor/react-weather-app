@@ -1,12 +1,13 @@
 import { useState } from "react";
 import logo from "./weather.svg";
 import "./App.css";
-import { Openweathermap_url, } from "./api";
+import { Openweathermap_url } from "./api";
 import { useEffect } from "react";
 
 function App() {
-  const [ currentWeather, setCurrentWeather ] = useState(null);
-   
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
+
   // useEffect(() => {
   //   Api();
   // }, [Api]);
