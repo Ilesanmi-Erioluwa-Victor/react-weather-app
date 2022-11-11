@@ -21,7 +21,7 @@ const WEEKS_DAYS = [
 const ForeCast = () => {
 
   const daysInaWeek = new Date().getDay();
-  
+  const forecastsDays = WEEKS_DAYS.slice(daysInaWeek, WEEKS_DAYS.length).concat(WEEKS_DAYS.slice(0, daysInaWeek));
   return <div>Forest</div>;
 };
 

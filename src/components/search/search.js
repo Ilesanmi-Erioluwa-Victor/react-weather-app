@@ -36,7 +36,8 @@ const Search = ({ onSearchChange }) => {
       debounceTimeout={600}
       value={search}
       onChange={handleChange}
-      loadOptions={loadOption}
+    //   loadOptions={loadOption}
+      options={loadOption}
     />
   );
 };
