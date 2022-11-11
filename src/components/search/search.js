@@ -5,7 +5,7 @@ import { GEO_API_URI, GeoApiOption } from "../../api";
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
-  const loadOption = (inputValue) => {
+  const loadOptions = (inputValue) => {
     return fetch(
       `${GEO_API_URI}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
       GeoApiOption
@@ -26,9 +26,19 @@ const Search = ({ onSearchChange }) => {
 
   const handleChange = (searchData) => {
     setSearch(searchData);
+    // passes the data that we got from input
     onSearchChange(searchData);
   };
-  return <div>search</div>;
+  return (
+    // AsyncPaginate is an alternative of Async but supports loading page by page
+    <AsyncPaginate
+      placeholder="Search for the City..."
+      debounceTimeout={600}
+      value={search}
+      onChange={handleChange}
+      loadOptions={loadOptions}
+    />
+  );
 };
 
 export default Search;
