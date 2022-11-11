@@ -20,6 +20,14 @@ function App() {
     const forecastFetch = fetch(
       `${GEO_API_URI}/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}&units=metric`
     );
+
+    Promise.all([currentWeatherFetch, forecastFetch]).then(async (response) => {
+      const weatherFetchResult = await response[0].json();
+      const forecastFetchResult = await response[1].json();
+
+      setCurrentWeather({ city: searchTerm.label, ...weatherFetchResult });
+      setForecast({ city: searchTerm.label, ...weatherFetchResult });
+    });
   };
   return <h1>Hello</h1>;
 }
