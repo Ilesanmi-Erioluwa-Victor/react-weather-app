@@ -1,7 +1,12 @@
 import logo from "./weather.svg";
 import "./App.css";
+import { Api } from "./api";
+import { useEffect } from "react";
 
 function App() {
+  // useEffect(() => {
+  //   Api();
+  // }, [Api]);
   return (
     <div className="App">
       <header className="App-header">
