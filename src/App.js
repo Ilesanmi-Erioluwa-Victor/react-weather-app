@@ -4,6 +4,7 @@ import "./App.css";
 import { Openweathermap_url } from "./api";
 import { useEffect } from "react";
 
+{ }
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
