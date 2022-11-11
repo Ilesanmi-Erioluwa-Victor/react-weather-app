@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "./weather.svg";
+import Currentweather from "./components/search/current-weather/current-weather";
 import "./App.css";
 import { Openweathermap_url, GEO_API_URI } from "./api";
 import { useEffect } from "react";
@@ -38,7 +39,7 @@ function App() {
     <div className="container">
       <Search onSearchChange={onHandleStateChange} />
       {/* Pop up results if they exist */}
-      {currentWeather && <CurrentWeather data={currentWeather} />}
+      {currentWeather && <Currentweather data={currentWeather} />}
       {forecast && <Forecast data={forecast} />}
     </div>
   );
