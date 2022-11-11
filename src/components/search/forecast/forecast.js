@@ -18,7 +18,7 @@ const WEEKS_DAYS = [
   "Sunday",
 ];
 
-const ForeCast = ({data}) => {
+const ForeCast = ({ data }) => {
   const daysInaWeek = new Date().getDay();
   const forecastsDays = WEEKS_DAYS.slice(daysInaWeek, WEEKS_DAYS.length).concat(
     WEEKS_DAYS.slice(0, daysInaWeek)
@@ -28,17 +28,31 @@ const ForeCast = ({data}) => {
     <>
       <label className="title">Daily</label>
       <Accordion allowZeroExpanded>
-    {data.list.slice(0, 7).map((item, index)=>(
-      <AccordionItem key={index}>
-        <AccordionItemHeading>
-          <AccordionItemButton>
-            <div className="daily-item">
-              <img src={} className="icon-small"/>
-            </div>
-          </AccordionItemButton>
-        </AccordionItemHeading>
-      </AccordionItem>
-    ))}
+        {data.list.slice(0, 7).map((item, index) => (
+          <AccordionItem key={index}>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                <div className="daily-item">
+                  <img
+                    src={`icons/${item.weather[0].icon}.png`}
+                    className="icon-small"
+                    alt="weather"
+                    loading="lazy"
+                  />
+
+                  <label className="day">{forecastsDays[index]}</label>
+                  <label className="description">
+                    {item.weather[0].description}
+                  </label>
+                  <label className="min-max">
+                    {Math.round(item.main.temp_min)}°C /
+                    {Math.round(item.main.temp_max)}°C
+                  </label>
+                </div>
+              </AccordionItemButton>
+            </AccordionItemHeading>
+          </AccordionItem>
+        ))}
       </Accordion>
     </>
   );
