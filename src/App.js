@@ -1,9 +1,11 @@
 import { useState } from "react";
+import "./App.css";
 import logo from "./weather.svg";
 import Currentweather from "./components/search/current-weather/current-weather";
-import "./App.css";
+import Forecast from "./components/search/forecast/forestcast";
+import Search from "./components/search/search";
+
 import { Openweathermap_url, GEO_API_URI } from "./api";
-import { useEffect } from "react";
 
 {
 }
@@ -28,7 +30,7 @@ function App() {
         const forecastFetchResult = await response[1].json();
 
         setCurrentWeather({ city: searchTerm.label, ...weatherFetchResult });
-        setForecast({ city: searchTerm.label, ...weatherFetchResult });
+        setForecast({ city: searchTerm.label, ...forecastFetchResult });
       })
       .catch((err) => console.log(err))
       .finally(console.log("Done Fetching api..."));
