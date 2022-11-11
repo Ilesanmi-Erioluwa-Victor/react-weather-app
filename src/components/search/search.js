@@ -10,7 +10,7 @@ const Search = ({ onSearchChange }) => {
       `${GEO_API_URI}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
       GeoApiOption
     )
-      .then((response) => console.log(response.json()))
+      .then((response) => response.json())
       .then((response) => {
         try {
           return {

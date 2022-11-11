@@ -1,11 +1,10 @@
 import { useState } from "react";
-import "./App.css";
-// import logo from "./weather.svg";
+import logo from "./weather.svg";
 import Currentweather from "./components/search/current-weather/current-weather";
 import Forecast from "./components/search/forecast/forecast";
 import Search from "./components/search/search";
 
-import { Openweathermap_url, GEO_API_URI } from "./api";
+import { Openweathermap_url } from "./api";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -19,7 +18,7 @@ function App() {
     );
 
     const forecastFetch = fetch(
-      `${GEO_API_URI}/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}&units=metric`
+      `${Openweathermap_url}/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_KEY}&units=metric`
     );
 
     Promise.all([currentWeatherFetch, forecastFetch])
@@ -37,10 +36,13 @@ function App() {
   };
   return (
     <div className="container">
-      <Search onSearchChange={onHandleStateChange} />
-      {/* Pop up results if they exist */}
-      {currentWeather && <Currentweather data={currentWeather} />}
-      {forecast && <Forecast data={forecast} />}
+      <img src={logo} alt="My Logo" loading="lazy" className="logo" />
+      <div className="content">
+        <Search onSearchChange={onHandleStateChange} />
+        {/* Pop up results if they exist */}
+        {currentWeather && <Currentweather data={currentWeather} />}
+        {forecast && <Forecast data={forecast} />}
+      </div>
     </div>
   );
 }
