@@ -10,16 +10,20 @@ const Search = ({ onSearchChange }) => {
       `${GEO_API_URI}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
       GeoApiOption
     )
-      .then((response) => response.json())
+      .then((response) => console.log(response.json()))
       .then((response) => {
-        return {
-          options: response.data.map((city) => {
-            return {
-              value: `${city.latitude} ${city.longitude}`,
-              label: `${city.name}, ${city.countryCode}`,
-            };
-          }),
-        };
+        try {
+          return {
+            options: response.data.map((city) => {
+              return {
+                value: `${city.latitude} ${city.longitude}`,
+                label: `${city.name}, ${city.countryCode}`,
+              };
+            }),
+          };
+        } catch (error) {
+          console.log(error);
+        }
       })
       .catch((err) => console.error(err));
   };
@@ -36,7 +40,7 @@ const Search = ({ onSearchChange }) => {
       debounceTimeout={600}
       value={search}
       onChange={handleChange}
-    //   loadOptions={loadOption}
+      loadOptions={loadOption}
       options={loadOption}
     />
   );
