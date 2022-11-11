@@ -18,11 +18,30 @@ const WEEKS_DAYS = [
   "Sunday",
 ];
 
-const ForeCast = () => {
-
+const ForeCast = ({data}) => {
   const daysInaWeek = new Date().getDay();
-  const forecastsDays = WEEKS_DAYS.slice(daysInaWeek, WEEKS_DAYS.length).concat(WEEKS_DAYS.slice(0, daysInaWeek));
-  return <div>Forest</div>;
+  const forecastsDays = WEEKS_DAYS.slice(daysInaWeek, WEEKS_DAYS.length).concat(
+    WEEKS_DAYS.slice(0, daysInaWeek)
+  );
+
+  return (
+    <>
+      <label className="title">Daily</label>
+      <Accordion allowZeroExpanded>
+    {data.list.slice(0, 7).map((item, index)=>(
+      <AccordionItem key={index}>
+        <AccordionItemHeading>
+          <AccordionItemButton>
+            <div className="daily-item">
+              <img src={} className="icon-small"/>
+            </div>
+          </AccordionItemButton>
+        </AccordionItemHeading>
+      </AccordionItem>
+    ))}
+      </Accordion>
+    </>
+  );
 };
 
 export default ForeCast;
