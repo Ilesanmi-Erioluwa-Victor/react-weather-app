@@ -36,7 +36,7 @@ function App() {
   };
   return (
     <div className="container">
-      <img src={logo} alt="My Logo" loading="lazy" className="logo" />
+      <img src={logo} alt="My Logo" loading="lazy" className="logo"/>
       <div className="content">
         <Search onSearchChange={onHandleStateChange} />
         {/* Pop up results if they exist */}
