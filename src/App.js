@@ -31,8 +31,17 @@ function App() {
       })
       .catch((err) => console.log(err))
       .finally(console.log("Done Fetching api..."));
+
+    console.log(currentWeather, forecast);
   };
-  return <h1>Hello</h1>;
+  return (
+    <div className="container">
+      <Search onSearchChange={onHandleStateChange} />
+      {/* Pop up results if they exist */}
+      {currentWeather && <CurrentWeather data={currentWeather} />}
+      {forecast && <Forecast data={forecast} />}
+    </div>
+  );
 }
 
 export default App;
