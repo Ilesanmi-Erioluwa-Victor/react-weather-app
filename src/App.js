@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import logo from "./weather.svg";
 import Currentweather from "./components/search/current-weather/current-weather";
-import Forecast from "./components/search/forecast/forestcast";
+import Forecast from "./components/search/forecast/forecast";
 import Search from "./components/search/search";
 
 import { Openweathermap_url, GEO_API_URI } from "./api";
